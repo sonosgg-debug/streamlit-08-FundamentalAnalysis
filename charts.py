@@ -8,16 +8,16 @@ from plotly.subplots import make_subplots
 import pandas as pd
 from typing import Optional, Dict, Any
 
-# Professional high-contrast palette for sleek gray background
+# High-contrast Tailwind Slate standard palette (#1E293B / #0F172A)
 THEME = {
-    'paper_bgcolor': '#1E2430',    # Elegant slate dark-gray paper
-    'plot_bgcolor': '#161B24',     # Deep slate-gray plot area
+    'paper_bgcolor': '#1E293B',    # Tailwind Slate-800 paper
+    'plot_bgcolor': '#0F172A',     # Tailwind Slate-900 deep dark plot area
     'text_main': '#F8FAFC',        # Crisp white for titles
     'text_body': '#E2E8F0',        # Off-white for general text
     'text_muted': '#94A3B8',       # Slate for muted labels
-    'grid_color': '#2A3342',       # Subtle dark slate grid lines
-    'border_color': '#3E4C5E',     # Axis lines & legend border
-    'legend_bg': 'rgba(30, 36, 48, 0.9)',
+    'grid_color': '#334155',       # High-contrast Slate-700 grid lines
+    'border_color': '#475569',     # Axis lines & legend border
+    'legend_bg': 'rgba(30, 41, 59, 0.85)',
     'consensus_line': '#F87171',   # Coral red for consensus
     'primary_bar': '#3B82F6',      # Vibrant blue
     'profit_bar': '#10B981',       # Vibrant green
