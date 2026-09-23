@@ -340,6 +340,21 @@ if "selected_code" not in st.session_state:
 # 사이드바: 종목 선택 입력 폼 & 조회 버튼
 # ==============================================================================
 with st.sidebar:
+    st.markdown(
+        """
+        <div style='padding: 2px 0 14px 0;'>
+            <div style='font-size: 1.25rem; font-weight: 700; color: #f8fafc; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;'>
+                <span>⚙️</span> 분석 설정
+            </div>
+            <div style='font-size: 0.82rem; color: #94a3b8; margin-top: 4px;'>
+                재무제표 및 펀더멘털 지표를 분석할 종목을 선택하세요.
+            </div>
+        </div>
+        <hr style='border: 0; height: 1px; background-color: #334155; margin: 12px 0 16px 0;'>
+        """,
+        unsafe_allow_html=True
+    )
+
     st.subheader("🔍 종목 선택")
 
     tickers_df = load_stock_tickers()
@@ -371,7 +386,17 @@ with st.sidebar:
         else:
             st.warning("⚠️ 종목 목록을 불러오지 못했습니다. 네트워크 상태를 확인해 주세요.")
 
-        submitted = st.form_submit_button("🔍 조회", use_container_width=True, type="primary")
+        col_btn1, col_btn2 = st.columns(2)
+        with col_btn1:
+            btn_update = st.form_submit_button("🔄 Update", use_container_width=True, help="캐시를 초기화하고 최신 재무 데이터를 다시 수집합니다.")
+        with col_btn2:
+            submitted = st.form_submit_button("🔍 조회", use_container_width=True, type="primary", help="선택한 종목으로 대시보드를 새로고침합니다.")
+
+        if btn_update:
+            st.cache_data.clear()
+            if selected_ticker:
+                st.session_state.selected_code = selected_ticker
+            st.rerun()
 
         if submitted and selected_ticker:
             if selected_ticker != st.session_state.selected_code:
