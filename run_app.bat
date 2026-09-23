@@ -1,8 +1,8 @@
 @echo off
 chcp 65001 > nul
-title Financial Chart Dashboard
+title Fundamental Analysis Dashboard
 echo ========================================================
-echo   Starting Financial Chart Web Dashboard...
+echo   Starting Fundamental Analysis Web Dashboard...
 echo   Address: http://localhost:8501
 echo ========================================================
 echo.
