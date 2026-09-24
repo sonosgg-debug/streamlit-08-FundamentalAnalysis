@@ -16,7 +16,7 @@ importlib.reload(fnguide_api)
 FAVICON_PATH = os.path.join(os.path.dirname(__file__), "favicon.png")
 
 st.set_page_config(
-    page_title="한국증시 종목 기본적 분석",
+    page_title="Fundamental Analysis - 기본적 분석 대시보드",
     page_icon=FAVICON_PATH if os.path.exists(FAVICON_PATH) else None,
     layout="wide",
     initial_sidebar_state="expanded"
