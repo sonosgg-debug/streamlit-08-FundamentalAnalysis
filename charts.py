@@ -21,24 +21,14 @@ STANDARD_CHART_THEME = {
     'legend_bg': 'rgba(30, 41, 59, 0.85)',
     'legend_border': '#334155',
     'hover_bg': 'rgba(15, 23, 42, 0.9)',
-    'hover_border': '#334155'
-}
-
-THEME = STANDARD_CHART_THEME
-_OLD_THEME = {
-    'paper_bgcolor': '#1E293B',    # Tailwind Slate-800 paper
-    'plot_bgcolor': '#0F172A',     # Tailwind Slate-900 deep dark plot area
-    'text_main': '#F8FAFC',        # Crisp white for titles
-    'text_body': '#E2E8F0',        # Off-white for general text
-    'text_muted': '#94A3B8',       # Slate for muted labels
-    'grid_color': '#334155',       # High-contrast Slate-700 grid lines
-    'border_color': '#475569',     # Axis lines & legend border
-    'legend_bg': 'rgba(30, 41, 59, 0.85)',
+    'hover_border': '#334155',
     'consensus_line': '#F87171',   # Coral red for consensus
     'primary_bar': '#3B82F6',      # Vibrant blue
     'profit_bar': '#10B981',       # Vibrant green
     'net_profit_bar': '#F59E0B'    # Vibrant amber
 }
+
+THEME = STANDARD_CHART_THEME
 
 COMMON_LAYOUT = dict(
     font=dict(family="Pretendard, Malgun Gothic, -apple-system, sans-serif", size=12, color=THEME['text_body']),
