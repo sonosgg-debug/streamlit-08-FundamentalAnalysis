@@ -485,7 +485,7 @@ with st.sidebar:
 # 메인 패널: 제목 및 12개 차트 순차적 표시
 # ==============================================================================
 st.markdown("<h1 class='main-title' style='text-align: center; color: #8AB4F8 !important; font-size: 2.0rem !important; font-weight: 800 !important; -webkit-text-fill-color: #8AB4F8 !important; margin-bottom: 8px;'><span style='color: #8AB4F8 !important; -webkit-text-fill-color: #8AB4F8 !important;'>한국 증시 종목별 실적 및 컨센서스 추이</span></h1>", unsafe_allow_html=True)
-st.markdown(f"<p style='text-align: center; color: #BDC1C6; font-size: 1.0rem; margin-bottom: 16px;'>📌 <b>{info.get('cmp_nm', active_code)}</b> ({active_code}) 실적 및 컨센서스 분석 대시보드</p>", unsafe_allow_html=True)
+st.markdown(f"<p style='text-align: center; color: #94a3b8; font-size: 0.95rem; margin-bottom: 16px;'>📌 <b>{info.get('cmp_nm', active_code)}</b> ({active_code}) 실적 및 컨센서스 분석 대시보드</p>", unsafe_allow_html=True)
 st.divider()
 
 # Fetch Data with spinner
@@ -499,6 +499,8 @@ with st.spinner("FnGuide 데이터를 불러오는 중입니다..."):
 if not fin_data:
     st.error(f"종목 [{active_code}]의 재무 하이라이트 데이터를 가져올 수 없습니다. ETF/ETN이거나 데이터가 없는 종목일 수 있습니다.")
 else:
+    st.markdown("<div style='font-size: 1.20rem; font-weight: 700; color: #8AB4F8; margin: 20px 0 10px 0; display: flex; align-items: center; gap: 8px;'><span>📊</span> 핵심 재무제표 및 컨센서스 심층 분석 차트 (12선)</div>", unsafe_allow_html=True)
+    
     # ----------------------------------------------------------------------
     # Chart 1: EPS (연결 연간 막대 + 전년도 대비 증가율 꺾은선)
     # ----------------------------------------------------------------------
