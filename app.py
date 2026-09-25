@@ -356,7 +356,7 @@ with st.sidebar:
         """
         <div style='padding: 2px 0 14px 0;'>
             <div style='font-size: 1.25rem; font-weight: 700; color: #f8fafc; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px;'>
-                <span>⚙️</span> 분석 설정
+                <span>⚙️</span> 조회/분석 설정
             </div>
             <div style='font-size: 0.82rem; color: #94a3b8; margin-top: 4px;'>
                 재무제표 및 펀더멘털 지표를 분석할 종목을 선택하세요.
