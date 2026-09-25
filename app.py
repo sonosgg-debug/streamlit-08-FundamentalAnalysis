@@ -3,9 +3,15 @@
 Data Source: https://wcomp.fnguide.com/
 """
 
+import socket
+socket.setdefaulttimeout(5.0)
+
 import os
+from datetime import datetime, timezone, timedelta
 import streamlit as st
 import pandas as pd
+
+KST = timezone(timedelta(hours=9))
 import fnguide_api
 import charts
 import importlib
@@ -38,6 +44,11 @@ st.markdown("""
         font-weight: 800 !important;
         text-align: center !important;
     }
+    /* Streamlit 고정 상단 헤더 배경 투명화 */
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+    }
+
     .main .block-container,
     [data-testid="stMainBlockContainer"],
     .block-container {
@@ -367,7 +378,7 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
-    st.subheader("🔍 종목 선택")
+    st.markdown("<div style='font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px;'>🔍 종목 선택</div>", unsafe_allow_html=True)
 
     tickers_df = load_stock_tickers()
     curr_code = st.session_state.get("selected_code", "005930")
