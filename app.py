@@ -3,9 +3,6 @@
 Data Source: https://wcomp.fnguide.com/
 """
 
-import socket
-socket.setdefaulttimeout(5.0)
-
 import os
 from datetime import datetime, timezone, timedelta
 import streamlit as st
@@ -216,7 +213,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-
 # -----------------------------------------------------------------------------
 # 1. 종목 리스트 로드 (33 NetBuyerChart 방식 + 로컬 CSV & 다중 폴백)
 # -----------------------------------------------------------------------------
@@ -274,7 +270,6 @@ def load_stock_tickers():
     }
     return pd.DataFrame(list(fallback_data.items()), columns=['티커', '종목']).set_index('티커')
 
-
 COMMON_ALIASES = {
     "현대자동차": "005380",
     "LG엔솔": "373220",
@@ -283,7 +278,6 @@ COMMON_ALIASES = {
     "하닉": "000660",
     "하이닉스": "000660",
 }
-
 
 def resolve_ticker_code(input_str: str, tickers_df: pd.DataFrame) -> str:
     """종목코드 또는 종목명을 입력받아 유효한 6자리 티커 코드를 반환"""
@@ -321,7 +315,6 @@ def resolve_ticker_code(input_str: str, tickers_df: pd.DataFrame) -> str:
 
     return ""
 
-
 CNS_METRIC_OPTIONS = {
     "0": "매출액",
     "1": "영업이익",
@@ -330,7 +323,6 @@ CNS_METRIC_OPTIONS = {
     "4": "PER",
     "5": "PER(Fwd,12M)"
 }
-
 
 # Cached Data Fetching
 @st.cache_data(ttl=300)
@@ -353,11 +345,9 @@ def load_target_prices(code: str):
 def load_free_cash_flow(code: str, freq: str = 'Y'):
     return fnguide_api.get_free_cash_flow_data(code, freq_typ=freq)
 
-
 # State initialization
 if "selected_code" not in st.session_state:
     st.session_state.selected_code = "005930"  # Default: 삼성전자
-
 
 # ==============================================================================
 # 사이드바: 종목 선택 입력 폼 & 조회 버튼
@@ -479,7 +469,6 @@ with st.sidebar:
         12. <b>적정주가 추이</b> (증권사별)
         </div>
         """, unsafe_allow_html=True)
-
 
 # ==============================================================================
 # 메인 패널: 제목 및 12개 차트 순차적 표시

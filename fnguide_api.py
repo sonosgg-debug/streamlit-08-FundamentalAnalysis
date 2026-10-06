@@ -3,9 +3,6 @@ FnGuide Data Scraper & API Client
 Fetches financial indicators, consensus timeseries, and target prices from https://wcomp.fnguide.com/
 """
 
-import socket
-socket.setdefaulttimeout(5.0)
-
 import re
 import json
 from datetime import datetime, timezone, timedelta
@@ -23,7 +20,6 @@ HEADERS = {
 }
 
 BASE_URL = 'https://wcomp.fnguide.com'
-
 
 def _extract_embedded_json(html: str, key: str) -> Optional[Dict[str, Any]]:
     """Extracts a JSON object assigned to a specific key in JavaScript block."""
@@ -61,7 +57,6 @@ def _extract_embedded_json(html: str, key: str) -> Optional[Dict[str, Any]]:
         except Exception:
             return None
     return None
-
 
 def get_company_basic_info(cmp_cd: str) -> Dict[str, Any]:
     """Fetches company name, market type, current price, and basic info from Snapshot."""
@@ -110,7 +105,6 @@ def get_company_basic_info(cmp_cd: str) -> Dict[str, Any]:
             'error': str(e)
         }
 
-
 def _fetch_snp_financial_api(cmp_cd: str, freq_typ: str) -> Optional[Dict[str, Any]]:
     """Fetches full 8-period Financial Highlight for Annual (Y) or Quarterly (Q)."""
     url = f"{BASE_URL}/CompanyInfo/getSnpFinancial?cmp_cd={cmp_cd}&consol_typ=C&freq_typ={freq_typ}"
@@ -123,7 +117,6 @@ def _fetch_snp_financial_api(cmp_cd: str, freq_typ: str) -> Optional[Dict[str, A
     except Exception:
         pass
     return None
-
 
 def get_financial_highlight_data(cmp_cd: str) -> Optional[Dict[str, Any]]:
     """
@@ -316,7 +309,6 @@ def get_financial_highlight_data(cmp_cd: str) -> Optional[Dict[str, Any]]:
         'df_pbr_y': df_pbr_y
     }
 
-
 def get_free_cash_flow_data(cmp_cd: str, freq_typ: str = 'Y') -> Dict[str, Any]:
     """
     Fetches Free Cash Flow chart data from FnGuide internal API:
@@ -362,7 +354,6 @@ def get_free_cash_flow_data(cmp_cd: str, freq_typ: str = 'Y') -> Dict[str, Any]:
         'freq_typ': freq_typ,
         'val_cols': val_cols
     }
-
 
 def get_consensus_timeseries_data(
     cmp_cd: str,
@@ -431,7 +422,6 @@ def get_consensus_timeseries_data(
         'df': df,
         'headers': header
     }
-
 
 def get_target_prices_data(cmp_cd: str) -> Dict[str, Any]:
     """
@@ -509,7 +499,6 @@ def get_target_prices_data(cmp_cd: str) -> Dict[str, Any]:
         'consensus_price': consensus_price,
         'df': df
     }
-
 
 def search_stocks_fnguide(query: str) -> List[Dict[str, str]]:
     """Searches stock codes and names via FnGuide autocomplete API."""
