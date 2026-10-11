@@ -21,18 +21,10 @@ except Exception:
         sys.modules["pkg_resources"] = pkg_mock
 
 import os
-from datetime import datetime, timezone, timedelta
 import streamlit as st
-import pandas as pd
-
-KST = timezone(timedelta(hours=9))
-import fnguide_api
-import charts
-import importlib
-importlib.reload(charts)
-importlib.reload(fnguide_api)
 
 # Page Configuration
+# [가이드 05] Streamlit 명령 최우선 실행 보장 (StreamlitAPIException 및 무한 로딩 방어)
 FAVICON_PATH = os.path.join(os.path.dirname(__file__), "favicon.png")
 
 st.set_page_config(
@@ -41,6 +33,21 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+from datetime import datetime, timezone, timedelta
+import pandas as pd
+import importlib
+
+KST = timezone(timedelta(hours=9))
+
+try:
+    import fnguide_api
+    import charts
+    importlib.reload(charts)
+    importlib.reload(fnguide_api)
+except Exception as e:
+    st.error(f"모듈 로드 중 오류가 발생했습니다: {e}")
+    st.stop()
 
 # Custom Styling
 st.markdown("""
